@@ -1,2 +1,10 @@
+
+
+#Mailbox Consolidation
 New-MailboxRestoreRequest -SourceMailbox <SOURCE-EMAIL> -TargetMailbox <DESTINATION-EMAIL> -TargetRootFolder "<SOURCE-EMAIL>" -AllowLegacyDNMismatch -Name "<USER NAME> Consolidation"
 New-MailboxRestoreRequest -SourceMailbox <SOURCE-EMAIL> -TargetMailbox <DESTINATION-EMAIL> -AllowLegacyDNMismatch -Name "<USER NAME> Consolidation - Archive" -SourceIsArchive -TargetisArchive
+
+
+#Mailbox Archive Status
+Get-Mailbox -Identity <username> | select -property ArchiveStatus
+Enable-Mailbox -Identity <username> -Archive
