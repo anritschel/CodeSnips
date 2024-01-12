@@ -1,0 +1,35 @@
+New-Item -Path HKCU:\Software -Name -Value –Force
+"reg add "\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v TargetReleaseVersion /t REG_DWORD /d 1 /f
+
+
+systeminfo | findstr "Domain"
+$arr.split(" ")[-1] <- returns last object of arra
+
+(Get-WmiObject -Class Win32_ComputerSystem).PartOfdomain
+(Get-WmiObject -Class Win32_ComputerSystem).workgroup
+
+(Get-WmiObject -Class Win32_bios).Serialnumber
+
+$password = (ConvertTo-SecureString "StrongPassword1" -AsPlainText -force)
+$username = "User1"
+
+[pscredential]$credObject = New-Object System.Management.Automation.PSCredential ($userName, $secStringPassword)
+
+Rename-Computer -computername -newname -localcredential -domaincredential
+
+test-netconnection
+Get-NetTCPConnection | Where-Object {$_.State -eq "Established"}
+Get-NetTCPConnection | Where-Object {$_.State -eq "Listen"}
+
+Get-DnsClientCache
+Clear-DnsClientCache
+
+get-netadapter
+enable-netadapter
+disable-netadapter
+
+Get-NetIPAddress | select -Property InterfaceAlias,IpAddress
+
+Get-NetIPConfiguration
+
+Get-NetRoute | Where-Object {$_.NextHop -ne '0.0.0.0' -and $_.NextHop -ne '::'}
