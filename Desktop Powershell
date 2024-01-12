@@ -1,7 +1,7 @@
 New-Item -Path HKCU:\Software -Name -Value –Force
 "reg add "\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v TargetReleaseVersion /t REG_DWORD /d 1 /f
-
-
+show-command
+C:\Windows\system32\pktmon.exe
 systeminfo | findstr "Domain"
 $arr.split(" ")[-1] <- returns last object of arra
 
@@ -33,3 +33,4 @@ Get-NetIPAddress | select -Property InterfaceAlias,IpAddress
 Get-NetIPConfiguration
 
 Get-NetRoute | Where-Object {$_.NextHop -ne '0.0.0.0' -and $_.NextHop -ne '::'}
+dism /online /cleanup-image /restorehealth
