@@ -1,3 +1,7 @@
+Set-azureaddevice -objectid -displayname
+
+add-azureaddeviceregisteredowner -objectid $pcObjectId -refobjectid $userObjectId
+remove-azureaddeviceregisteredowner -objectid -ownerid
 
 
 #Mailbox Consolidation
