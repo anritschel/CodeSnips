@@ -12,3 +12,6 @@ New-MailboxRestoreRequest -SourceMailbox <SOURCE-EMAIL> -TargetMailbox <DESTINAT
 #Mailbox Archive Status
 Get-Mailbox -Identity <username> | select -property ArchiveStatus
 Enable-Mailbox -Identity <username> -Archive
+
+
+Add-RecipientPermission <Mailbox> -AccessRights SendAs -Trustee <User>
