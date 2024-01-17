@@ -15,3 +15,15 @@ Enable-Mailbox -Identity <username> -Archive
 
 
 Add-RecipientPermission <Mailbox> -AccessRights SendAs -Trustee <User>
+
+
+Connect-ExchangeOnline
+Connect-Ippssession
+    $subject = ""
+    $sender = ""
+    $searchName = ""
+    $query = '(Subject:'  + $subject + ') AND (Sender:' + $sender + ')'
+    $Search = New-ComplianceSearch -Name $searchName -ExchangeLocation All -ContentMatchQuery $query
+    Start-ComplianceSearch -Identity $Search.Identity
+
+New-ComplianceSearchAction -SearchName $searchName -Purge -PurgeType HardDelete
