@@ -27,3 +27,6 @@ Connect-Ippssession
     Start-ComplianceSearch -Identity $Search.Identity
 
 New-ComplianceSearchAction -SearchName $searchName -Purge -PurgeType HardDelete
+
+Enable-OrganizationCustomization #Then check back in a couple hours
+New-ManagementRoleAssignment -Role:ApplicationImpersonation -User user@email.com
