@@ -13,6 +13,9 @@ New-MailboxRestoreRequest -SourceMailbox <SOURCE-EMAIL> -TargetMailbox <DESTINAT
 Get-Mailbox -Identity <username> | select -property ArchiveStatus
 Enable-Mailbox -Identity <username> -Archive
 
+$DDL = Get-DynamicDistributionGroup -Identity 
+Get-Recipient -RecipientPreviewFilter $DDL.RecipientFilter | select -Property DisplayName | Export-Csv
+
 
 Add-RecipientPermission <Mailbox> -AccessRights SendAs -Trustee <User>
 
