@@ -2,7 +2,7 @@ Connect-ExchangeOnline
 Connect-Ippssession
 
 $searchName = ""
-$query = '(Subject: '') AND (Sender: '')'
+$query = "(Subject: '') AND (Sender: '') AND (Received: 1/1/2001..1/1/2024)"
 $Search = New-ComplianceSearch -Name $searchName -ExchangeLocation All -ContentMatchQuery $query
 Start-ComplianceSearch -Identity $Search.Identity
 
