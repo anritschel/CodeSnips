@@ -34,3 +34,7 @@ Get-NetIPConfiguration
 
 Get-NetRoute | Where-Object {$_.NextHop -ne '0.0.0.0' -and $_.NextHop -ne '::'}
 dism /online /cleanup-image /restorehealth
+
+#check AAD join status
+dsregcmd /status
+dsregcmd /leave
