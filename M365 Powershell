@@ -14,7 +14,7 @@ Get-Mailbox -Identity <username> | select -property ArchiveStatus
 Enable-Mailbox -Identity <username> -Archive
 
 $DDL = Get-DynamicDistributionGroup -Identity "name"
-Get-Recipient -RecipientPreviewFilter $DDL.RecipientFilter | select -Property DisplayName | Export-Csv
+Get-Recipient -RecipientPreviewFilter $DDL.RecipientFilter | select -Property DisplayName | Export-Csv "C:\path\to\location\file name.csv"
 
 
 Add-RecipientPermission <Mailbox> -AccessRights SendAs -Trustee <User>
