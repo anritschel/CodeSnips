@@ -1,0 +1,9 @@
+Invoke-GraphRequest -Method PUT -Uri '/v1.0/sites/{Site-ID}/drive/items/root:/{relativePath}/{File.Name}:/content' -InputFilePath {C:\path\to\file.txt}
+
+the relative path can contain spaces in folder names. 
+If the path doesn't exist it will create it.
+
+To find site ID use msgraph explorer:
+https://developer.microsoft.com/en-us/graph/graph-explorer
+scope Files.Read
+search query: https://graph.microsoft.com/v1.0/sites?search= 
