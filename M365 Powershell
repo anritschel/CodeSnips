@@ -36,3 +36,11 @@ New-ComplianceSearchAction -SearchName $searchName -Purge -PurgeType HardDelete
 
 Enable-OrganizationCustomization #Then check back in a couple hours
 New-ManagementRoleAssignment -Role:ApplicationImpersonation -User user@email.com
+
+
+Intune-Autopilot
+
+(device.devicePhysicalIDs -any (_ -startsWith "[ZTDid]"))
+
+install-script get-windowsautopilotinfo.ps1 
+get-windowsautopilotinfo.ps1 -online
