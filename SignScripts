@@ -1,0 +1,11 @@
+
+create Self Signed Certificate
+$Cert = New-SelfSignedCertificate -Subject <Name> -CertStoreLocation Cert:\LocalMachine\My -Type CodeSigningCert
+
+Export certificate and import to trusted root
+
+
+
+$codeCertificate = Get-ChildItem Cert:\<location>| Where-Object {$_.Subject -eq "CN=<NAME>"}
+
+Set-AuthenticodeSignature -FilePath <Path> -Certificate $codeCertificate -TimeStampServer http://timestamp.digicert.com
