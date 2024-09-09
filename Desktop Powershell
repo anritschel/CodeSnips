@@ -1,3 +1,10 @@
+
+$cert = New-SelfSignedCertificate -KeyUsage DigitalSignature -KeySpec Signature -KeyAlgorithm RSA -KeyLength 2048 -CertStoreLocation Cert:\CurrentUser\My -Type CodeSigningCert -Subject “Code Signing”
+export-Certificate -Cert $cert -FilePath C:\temp\codesigning.cer
+
+get-childitem cert:\localMachine\root\<thumbprint>
+Set-AuthenticodeSignature -FilePath C:\temp\test-signing.ps1 -Certificate $cert -TimestampServer http://timestamp.digicert.com
+
 New-Item -Path HKCU:\Software -Name -Value –Force
 "reg add "\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v TargetReleaseVersion /t REG_DWORD /d 1 /f
 show-command
