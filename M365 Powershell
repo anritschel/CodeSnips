@@ -6,6 +6,9 @@ remove-azureaddeviceregisteredowner -objectid -ownerid
 Enable-Mailbox -Identity $EmailAddress -Archive
 Enable-Mailbox $EmailAddress -AutoExpandingArchive
 
+get-mailbox <email> | select Name,RetentionPolicy,RetentionHoldEnabled
+set-mailbox <email> -RetentionHoldEnabled $false
+Start-ManagedFolderAssistant -Identity
 
 #Mailbox Consolidation
 New-MailboxRestoreRequest -SourceMailbox <SOURCE-EMAIL> -TargetMailbox <DESTINATION-EMAIL> -TargetRootFolder "<SOURCE-EMAIL>" -AllowLegacyDNMismatch -Name "<USER NAME> Consolidation"
