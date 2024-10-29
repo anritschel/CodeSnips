@@ -1,4 +1,13 @@
 
+$path = "C:\temp\image.png"
+$NewFilePath = "C:\temp\newfile.txt"
+[convert]::ToBase64String((get-content $path -encoding byte)) | out-file $NewFilePath
+$file = get-content "C:\temp\img.txt" 
+$filename = "C:\temp\img.png"
+$bytes = [Convert]::FromBase64String($file)
+[IO.File]::WriteAllBytes($filename, $bytes)
+
+
 $cert = New-SelfSignedCertificate -KeyUsage DigitalSignature -KeySpec Signature -KeyAlgorithm RSA -KeyLength 2048 -CertStoreLocation Cert:\CurrentUser\My -Type CodeSigningCert -Subject “Code Signing”
 export-Certificate -Cert $cert -FilePath C:\temp\codesigning.cer
 
