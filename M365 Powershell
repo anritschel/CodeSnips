@@ -1,3 +1,7 @@
+
+
+Set-MailboxJunkEmailConfiguration "Michele Martin" -TrustedSendersAndDomains @{Add="contoso.com","fabrikam.com"} -BlockedSendersAndDomains @{Add="jane@fourthcoffee.com"}
+
 Set-azureaddevice -objectid -displayname
 
 add-azureaddeviceregisteredowner -objectid $pcObjectId -refobjectid $userObjectId
