@@ -1,3 +1,2 @@
 ssh-keygen
-ssh-copy-id
-ssh user@host
+ssh-copy-id user@host
