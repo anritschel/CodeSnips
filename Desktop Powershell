@@ -14,6 +14,10 @@ $bytes = [Convert]::FromBase64String($file)
 $cert = New-SelfSignedCertificate -KeyUsage DigitalSignature -KeySpec Signature -KeyAlgorithm RSA -KeyLength 2048 -CertStoreLocation Cert:\CurrentUser\My -Type CodeSigningCert -Subject “Code Signing”
 export-Certificate -Cert $cert -FilePath C:\temp\codesigning.cer
 
+$cert = New-SelfSignedCertificate -Subject "CN=Name" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256 -NotAfter (get-date).AddYears(1)
+export-certificate -cert $cert -filePath C:\temp\cert.cer
+$cert | Export-PfxCertificate -FilePath C:\temp\certificate.pfx -Password (ConvertTo-SecureString -AsPlainText "P@ssword123" -force) #Required to be able to import into other user's devices. 
+
 get-childitem cert:\localMachine\root\<thumbprint>
 Set-AuthenticodeSignature -FilePath C:\temp\test-signing.ps1 -Certificate $cert -TimestampServer http://timestamp.digicert.com
 
