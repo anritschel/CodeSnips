@@ -1,0 +1,29 @@
+get router info routing-table detail <destination-IP>
+
+get router info routing-table all
+
+get vpn ipsec tunnel summary
+
+diagnose vpn ike gateway list name <IPsec Tunnel Name>
+
+diagnose debug reset
+
+diagnose vpn ike log filter dst-addr4 x.x.x.x
+diagnose debug application ike -1
+diagnose debug console timestamp enable
+diagnose debug enable
+
+diagnose debug disable
+diagnose debug reset
+
+config log syslogd setting
+    set status enable
+    set server "x.x.x.x"
+    set source-ip "x.x.x.x"
+    set interface-select-method specify
+    set interface "name"
+end
+
+
+
+diagnose sniffer packet any "host x.x.x.x and port 514" 4 0 l
