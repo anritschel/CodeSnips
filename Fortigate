@@ -24,6 +24,15 @@ config log syslogd setting
     set interface "name"
 end
 
+diagnose autoupdate versions
+
+config log disk setting
+    set status enable
+
+config log disk setting #default 7 days
+    set maximum-log-age <integer>
+
+
 
 
 diagnose sniffer packet any "host x.x.x.x and port 514" 4 0 l
