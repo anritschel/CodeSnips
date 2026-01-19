@@ -1,6 +1,6 @@
 Get-ScheduledTask | where {$_.TaskName -eq 'PushLaunch'} | Start-ScheduledTask 
 
-
+VK7JG-NPHTM-C97JM-9MPGT-3V66T
 
 $path = "C:\temp\image.png"
 $NewFilePath = "C:\temp\newfile.txt"
