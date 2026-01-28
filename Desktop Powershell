@@ -1,6 +1,7 @@
 Get-ScheduledTask | where {$_.TaskName -eq 'PushLaunch'} | Start-ScheduledTask 
 
 Get-ChildItem -Path "C:\Program Files\7-Zip" -File | Select-Object FullName, @{Name="FileVersion"; Expression={$_.VersionInfo.FileVersion} }
+Get-ChildItem -Path $path | Get-ItemProperty | where {($_.DisplayName -like "7-zip*") -and ([version]$_.DisplayVersion -lt $currentVersion)} | Remove-Item
 
 VK7JG-NPHTM-C97JM-9MPGT-3V66T
 
