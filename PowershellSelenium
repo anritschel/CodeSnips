@@ -1,0 +1,27 @@
+Register-PackageSource -Name NuGet -location https://www.nuget.org/api/v2/ -ProviderName Nuget
+Install-Package Selenium.WebDriver.ChromeDriver -Path
+
+Install-Package Selenium.WebDriver -Destination C:\scripts\resources\
+Install-Package Selenium.WebDriver.ChromeDriver -Destination C:\scripts\resources\
+
+$DriverPath = "C:\scripts\resources\Selenium.WebDriver.ChromeDriver.147.0.7727.5700\driver\win32\chromedriver.exe"
+
+$options = New-Object OpenQA.Selenium.Chrome.ChromeOptions
+$options.ImplicitWaitTimeout = [System.TimeSpan]::FromSeconds(2)
+$options.AddArgument("--silent")
+$options.AddArgument("--log-level=3")
+$options.AddArgument("start-maximized")
+
+$service = [OpenQA.Selenium.Chrome.ChromeDriverService]::CreateDefaultService($DriverPath)
+$service.SuppressInitialDiagnosticInformation = $true
+$service.HideCommandPromptWindow= $true
+
+$Driver = New-Object OpenQA.Selenium.Chrome.ChromeDriver($service,$options)
+
+$driver.Navigate().GoToUrl('https://google.com')
+$searchBox = $driver.FindElement([OpenQA.Selenium.By]::XPath('//*[@id="APjFqb"]'))
+
+$searchBox.SendKeys("Yes")
+
+$luckyButton = $driver.FindElement([OpenQA.Selenium.By]::XPath('/html/body/div[2]/div[4]/form/div[1]/div[1]/div[2]/div[4]/div[6]/center/input[2]'))
+$luckyButton.Click()
