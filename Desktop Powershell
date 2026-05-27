@@ -66,3 +66,8 @@ dism /online /cleanup-image /restorehealth
 #check AAD join status
 dsregcmd /status
 dsregcmd /leave
+
+$acl = Get-Acl "C:\path\to\file.txt"
+$rule = New-Object System.Security.AccessControl.FileSystemAccessRule("user@yourdomain.com","FullControl","Allow")
+$acl.SetAccessRule($rule)
+Set-Acl "C:\path\to\file.txt" $acl
