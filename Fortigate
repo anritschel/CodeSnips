@@ -32,7 +32,16 @@ config log disk setting
 config log disk setting #default 7 days
     set maximum-log-age <integer>
 
+config system link-monitor
+    edit "ISP_Failover"
+        set srcintf "wan1"
+        set server "8.8.8.8"
+        set probe-timeout 300
+        set failtime 3
+        set recoverytime 1
+    next
+end
 
-
+diag sys link-monitor status
 
 diagnose sniffer packet any "host x.x.x.x and port 514" 4 0 l
