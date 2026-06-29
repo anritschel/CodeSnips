@@ -1,0 +1,6 @@
+function prompt{
+	$time = Get-Date -format hh:mm:ss
+	$dir = get-location
+
+	"[$([char]27)[31m$time$([char]27)[0m] - [$((whoami).split("\")[-1])] `n$([char]27)[32m$dir$([char]27)[0m `n#"
+}
