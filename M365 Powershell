@@ -51,3 +51,9 @@ Intune-Autopilot
 
 install-script get-windowsautopilotinfo.ps1 
 get-windowsautopilotinfo.ps1 -online
+
+$CertPath = "/path/to/your/cert.pfx"
+$CertPassword = ConvertTo-SecureString -String "YourPfxPassword" -AsPlainText -Force
+$Cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($CertPath, $CertPassword)
+
+Connect-MgGraph -ClientId "<App-Client-ID>" -TenantId "<Tenant-ID>" -Certificate $Cert
